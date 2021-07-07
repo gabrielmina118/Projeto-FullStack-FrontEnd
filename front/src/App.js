@@ -1,15 +1,12 @@
-import styled from 'styled-components';
+import theme from './constants/theme';
 import Router from './Routes/Router';
+import { ThemeProvider } from '@material-ui/core/styles'
 
-const Main = styled.div`
-    width: 100%;
-    height: 100vh;
-`
 export default function App() {
   return (
-    <Main>
+    <ThemeProvider theme={theme}>
       <Router />
-    </Main>
+    </ThemeProvider>
   );
 }
 
