@@ -5,18 +5,19 @@ import { useHistory } from "react-router-dom";
 import useForm from '../../Hook/useForm';
 import { Form, Buttons, Main } from './style';
 import { goToForgotPassPage } from '../../Routes/Coordinator'
+import { LoginApi } from "./LoginApi";
 
 
 const Login = () => {
 
     const [form, onChange, clear] = useForm({ emailOrNick: '', password: '' })
+    const history = useHistory();
 
     const onSubmitForm = (event) => {
         event.preventDefault()
-        console.log(form);
+        LoginApi(form,history)
     }
 
-    const history = useHistory();
     return (
         <Main>
             <h1>Login</h1>
