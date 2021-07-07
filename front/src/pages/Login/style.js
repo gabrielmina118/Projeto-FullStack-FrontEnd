@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Main = styled.div`
     display: flex;
@@ -9,15 +9,18 @@ export const Main = styled.div`
     height: 90vh;
 `
 
-
-export const ImagemLogo = styled.img`
+export const Form = styled.form`
     display: flex;
-    width:100%;
-    height:70%;    
+    flex-direction: column;
+    align-items:center;
+    height:100%;
 `
 
 export const Buttons = styled.div`
     display: flex;
-    width: 104%;
+    flex-direction: column;
+    align-items: center;
     justify-content: space-evenly;
+    height:40%;
+    
 `

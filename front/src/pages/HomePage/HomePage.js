@@ -1,28 +1,34 @@
+import { Button } from "@material-ui/core";
 import React from "react";
 import { useHistory } from 'react-router-dom';
 import logo from '../../assets/imagens/frontInstagram.jpg'
-import { ImagemLogo,Buttons } from './Style'
+import { ImagemLogo, Buttons, Main } from './Style'
+import { goToLoginPage, goToRegisterPage } from '../../Routes/Coordinator'
+
 
 export default function HomePage() {
 
     const history = useHistory();
-    
-    const goToLoginPage = () =>{
-        history.push("/login")
-    }
-    
 
-    const goToRegisterPage = () =>{
-        history.push("/register")
-    }
 
     return (
-        <div>
+        <Main>
             <ImagemLogo src={logo} />
             <Buttons>
-                <button type="button" onClick={goToRegisterPage}>Registrar</button>
-                <button type="button" onClick={goToLoginPage}>Entrar</button>
+                <Button
+                    variant="outlined"
+                    color="default"
+                    style={{ width: 170, height: 52 }}
+                    onClick={() => goToRegisterPage(history)}
+                    bg='brand.200'>Registrar</Button>
+                <Button
+                    variant="contained"
+                    color="primary"
+                    style={{ width: 170, height: 52 }}
+                    onClick={() => goToLoginPage(history)}>
+                    Entrar
+                </Button>
             </Buttons>
-        </div>
+        </Main>
     )
 }
