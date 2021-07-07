@@ -14,3 +14,6 @@
 
 Figma Projeto 
 https://www.figma.com/file/jvksGTjMdtiAl413yEUD8J/Prototyping-in-Figma?node-id=0%3A1
+
+Trello
+https://trello.com/b/UOg2eemv/projeto-full-stack

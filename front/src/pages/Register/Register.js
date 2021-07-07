@@ -3,15 +3,18 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import useForm from '../../Hook/useForm';
 import {Form} from './style'
+import { RegisterApi } from './RegisterApi';
+import { useHistory } from 'react-router-dom';
 
 
 export default function Register() {
 
     const [form, onChange, clear] = useForm({ name: '', nickname: '', email: '', password: '' })
+    const history = useHistory();
 
     const onSubmitForm = (event) => {
-        event.preventDefault()
-        console.log(form);
+        event.preventDefault();
+        RegisterApi(form,history)
     }
 
     return (

@@ -4,6 +4,7 @@ import React from 'react'
 import { useHistory } from 'react-router';
 import useForm from '../../Hook/useForm';
 import { goToLoginPage } from '../../Routes/Coordinator';
+import { ForgotPassAPi } from './ForgotPassApi';
 import { Main,Form,Buttons } from './style';
 
 const ForgotPass = () => {
@@ -13,10 +14,9 @@ const ForgotPass = () => {
 
     const onSubmitForm = (event) => {
         event.preventDefault()
-        console.log(form);
-        alert(`Uma nova senha foi enviada para ${form.email}`)
-        goToLoginPage(history)
+        ForgotPassAPi(form,history)
     }
+    
     return (
         <Main>
             <h1>Resetar Senha</h1>
