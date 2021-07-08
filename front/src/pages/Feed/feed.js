@@ -24,8 +24,8 @@ export default function Feed() {
 
     const feedscreen = feed && feed.feeds && feed.feeds.map((feed) => {
         return (
-            <div>
-                <h2>NickName{feed.nickname}</h2>
+            <div key={feed.file_photo}>
+                <h2>@{feed.nickname}</h2>
                 <img src={feed.file_photo} />
             </div>
         )
