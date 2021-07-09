@@ -5,6 +5,8 @@ import { SugestionsPersonApi } from './SugestionsPersonApi';
 import { SugestionPersonCard } from '../../components/SugestionPerson/SugestionPersonCard';
 import { PersonSugestion, FeedCard, ImagemFeed, PersonFollow, Person, MainFeed } from './styles'
 import { PersonFollowApi } from './PersonFollow';
+import { useHistory } from 'react-router-dom';
+import { goToProfilePage } from '../../Routes/Coordinator';
 
 
 export default function Feed() {
@@ -12,7 +14,8 @@ export default function Feed() {
     const [person, getperson] = SugestionsPersonApi()
     const [feed, getFeed] = FeedApi([])
     const [PersonFollowHeade,getPersonFollow] = PersonFollowApi([])
-
+    
+    const history = useHistory()
 
     const personScreen = person && person.allPersons && person.allPersons.map((person) => {
         return (
@@ -26,6 +29,7 @@ export default function Feed() {
     })
 
     const feedscreen = feed && feed.feeds && feed.feeds.map((feed) => {
+       
         return (
             <FeedCard key={feed.file_photo}>
                 <h2>@{feed.nickname}</h2>
@@ -38,6 +42,7 @@ export default function Feed() {
         return (
             <div key={feed.file_photo}>
                 <h2>@{feed.person_followed_id}</h2>
+                <button onClick={()=>goToProfilePage(history,feed.person_followed_id)}>Ver perfil</button>
             </div>
         )
     })
