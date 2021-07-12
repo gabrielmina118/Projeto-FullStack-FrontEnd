@@ -33,11 +33,16 @@ export default function Feed() {
     const feedscreen = feed && feed.feeds && feed.feeds.map((feed) => {
         return (
             <FeedCard key={feed.file_photo}>
-                <Card
-                    image={feed.file_photo}
-                    header={"@" + feed.nickname}
-                    meta='Friend'
-                />
+                <div class="ui card">
+                    <div class="content">
+                        <div class="right floated meta">14h</div>
+                        <img class="ui avatar image" src={feed.photo_profile} /> {"@" + feed.nickname}
+                    </div>
+                    <div class="image">
+                        <img src={feed.file_photo} />
+                    </div>
+
+                </div>
                 <br></br>
             </FeedCard>
         )
@@ -53,13 +58,13 @@ export default function Feed() {
         )
     })
 
-    useEffect(()=>{
+    useEffect(() => {
         getFeed()
-    },[])
+    }, [])
 
     return (
         <>
-        
+
             <MainFeed>Feeds</MainFeed>
             <PersonFollow>
                 <h2>Pessoas que eu sigo</h2>
@@ -70,7 +75,7 @@ export default function Feed() {
                 <Person>{personScreen}</Person>
             </PersonSugestion>
             <div>{feedscreen}</div>
-            <FooterComponent tokenId={feed && feed.tokenId}/>
+            <FooterComponent tokenId={feed && feed.tokenId} />
         </>
     )
 }

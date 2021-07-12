@@ -39,8 +39,10 @@ export default function Profile() {
     })
 
 
+    const imageProfile = personProfile && personProfile.personProfile && personProfile.personProfile.photo_profile;
     return (
         <Main>
+            <img class="ui medium bordered circular image" src={imageProfile}></img>
             <ProfilePerson>
                 <p>{personProfile && personProfile.personProfile && personProfile.personProfile.name}</p>
                 <p>@{personProfile && personProfile.personProfile && personProfile.personProfile.nickname}</p>
