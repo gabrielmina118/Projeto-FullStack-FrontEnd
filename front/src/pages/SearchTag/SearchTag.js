@@ -88,7 +88,6 @@ const SearchTag = () => {
             </SearchtagsDiv>
             <FooterComponent />
         </Main>
-
     )
 }
 export default SearchTag

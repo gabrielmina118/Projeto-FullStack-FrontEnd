@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useProtectedPage } from '../../Hook/useProtectedPage';
 import { FeedApi } from './FeedApi';
 import { SugestionsPersonApi } from './SugestionsPersonApi';
@@ -18,9 +18,6 @@ export default function Feed() {
 
 
     const history = useHistory();
-
-    
-    
 
     const personScreen = person && person.allPersons && person.allPersons.map((person) => {
         return (
@@ -55,6 +52,10 @@ export default function Feed() {
             </PersonFolled>
         )
     })
+
+    useEffect(()=>{
+        getFeed()
+    },[])
 
     return (
         <>

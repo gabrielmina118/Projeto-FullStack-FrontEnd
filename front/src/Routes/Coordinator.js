@@ -23,3 +23,7 @@ export const goToSearchTagPage = (history) =>{
 export const goToForgotPassPage = (history) =>{
     history.push("/forgotPass")
 }
+
+export const goToCreatePost = (history) =>{
+    history.push("/createPost")
+}

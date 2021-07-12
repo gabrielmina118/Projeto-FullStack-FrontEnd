@@ -1,6 +1,6 @@
 import React from "react"
 import { useHistory } from "react-router-dom"
-import { goTofeedPage, goToSearchTagPage , goToProfilePage } from "../../Routes/Coordinator.js"
+import { goTofeedPage, goToSearchTagPage , goToProfilePage, goToCreatePost } from "../../Routes/Coordinator.js"
 import {Footer, Icones} from './style.js'
 
 export const FooterComponent = (props) =>{
@@ -18,7 +18,7 @@ export const FooterComponent = (props) =>{
                             <i class="search icon"></i>
                             Search
                         </a>
-                        <a class="item" >
+                        <a class="item" onClick={()=> goToCreatePost(history)}>
                             <i class="plus icon"></i>
                             Post
                         </a>

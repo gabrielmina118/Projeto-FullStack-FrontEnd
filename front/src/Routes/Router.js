@@ -7,6 +7,7 @@ import Feed from '../pages/Feed/feed'
 import Profile from '../pages/Profile/profile'
 import SearchTag from '../pages/SearchTag/SearchTag'
 import ForgotPass from "../pages/ForgotPass/ForgotPass";
+import Post from "../pages/Post/Post";
 
 
 const Router = () =>{
@@ -40,6 +41,10 @@ const Router = () =>{
 
                 <Route exact path="/forgotPass">
                     <ForgotPass />
+                </Route>
+
+                <Route exact path="/createPost">
+                    <Post/>
                 </Route>
 
                 <Route>
