@@ -3,6 +3,7 @@ import useForm from '../../Hook/useForm';
 import TextField from '@material-ui/core/TextField';
 import { Main, Form, SearchtagsDiv, FeedCard, ImagemFeed ,TagAlreadExist} from './style'
 import axios from 'axios';
+import { FooterComponent } from '../../components/footer/Footer';
 
 const SearchTag = () => {
 
@@ -67,6 +68,7 @@ const SearchTag = () => {
                     )
                 })}
             </SearchtagsDiv>
+            <FooterComponent/>
         </Main>
 
     )
