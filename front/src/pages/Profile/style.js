@@ -21,6 +21,7 @@ export const ProfilePerson = styled.div`
 `
 
 export const ProfileImage = styled.div`
+    margin-top: 20px;
     width: 100%;
     height: 30%;
     display: grid;
@@ -32,6 +33,7 @@ export const FeedCard = styled.div`
     flex-direction: column;
     width: 100%;
     height: 100%;
+    border: 1px solid black;
 
 `
 export const ImagemFeed = styled.img`
