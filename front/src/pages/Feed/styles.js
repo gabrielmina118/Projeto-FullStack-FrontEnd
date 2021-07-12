@@ -10,13 +10,12 @@ export const MainFeed = styled.div`
 export const PersonFollow = styled.div`
     display: flex;
     flex-direction: column;
-    width: 100%;
 `
 
 export const Person = styled.div`
     display: flex;
+    flex-direction:row;
     flex-flow: row wrap;
-    justify-content: space-around;
 `
 
 export const PersonSugestion = styled.div`
@@ -25,6 +24,7 @@ export const PersonSugestion = styled.div`
 `
 export const FeedCard = styled.div`
     display: flex;
+    align-items: center;
     flex-direction: column;
     width: 100%;
     height: 100%;
@@ -34,4 +34,24 @@ export const ImagemFeed = styled.img`
     width: 100%;
     height: 100%;
 
+`
+
+export const PersonFolled = styled.div`
+    display: flex;
+    flex-direction: row;
+`
+
+export const Footer = styled.div`
+    overflow: hidden;
+    background-color: #333;
+    position: fixed;
+    bottom: 0;
+    display:flex ;
+    align-items: center;
+    justify-content: center;
+`
+export const Icones = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 `

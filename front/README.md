@@ -1,7 +1,7 @@
 # Projeto-Full-stack(FrontEnd) :technologist: Gabriel Mina
 ## Stacks utilizadas
 ### - React
-
+### Design system - Material-Ui 
 
 
 ## FrontEnd
