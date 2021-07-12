@@ -3,8 +3,9 @@ import { useHistory } from "react-router-dom"
 import { goTofeedPage, goToSearchTagPage , goToProfilePage } from "../../Routes/Coordinator.js"
 import {Footer, Icones} from './style.js'
 
-export const FooterComponent = () =>{
+export const FooterComponent = (props) =>{
     const history = useHistory()
+    
     return(
         <Footer>
                 <div class="ui labeled icon menu">
@@ -21,7 +22,7 @@ export const FooterComponent = () =>{
                             <i class="plus icon"></i>
                             Post
                         </a>
-                        <a class="item" >
+                        <a class="item" onClick={()=> goToProfilePage(history,props.tokenId)}>
                             <i class="user icon"></i>
                             Profile
                         </a>

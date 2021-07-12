@@ -2,6 +2,7 @@ import { Button } from '@material-ui/core';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { FooterComponent } from '../../components/footer/Footer';
 import { useProtectedPage } from '../../Hook/useProtectedPage'
 import { Main, ProfilePerson, ProfileImage, FeedCard, ImagemFeed } from './style'
 
@@ -49,10 +50,11 @@ export default function Profile() {
                 color="primary"
                 style={{ width: 300, height: 52 }}
                 bg='brand.100'
-            >Follow{ }</Button>
+            >Follow  @{ personProfile && personProfile.personProfile && personProfile.personProfile.nickname}</Button>
             <ProfileImage>
                 {photosScreen}
             </ProfileImage>
+            <FooterComponent/>
         </Main>
 
     )

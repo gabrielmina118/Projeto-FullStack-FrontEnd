@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import useForm from '../../Hook/useForm';
 import TextField from '@material-ui/core/TextField';
-import { Main, Form, SearchtagsDiv, FeedCard, ImagemFeed ,TagAlreadExist} from './style'
+import { Main, Form, SearchtagsDiv, FeedCard, ImagemFeed, TagAlreadExist } from './style'
 import axios from 'axios';
 import { FooterComponent } from '../../components/footer/Footer';
 
@@ -9,6 +9,8 @@ const SearchTag = () => {
 
     const [form, onChange, clear] = useForm({ search: '' })
     const [tagsPhotos, setTagsPhotos] = useState([]);
+    const [allTagsBd, setAllTagsBd] = useState([])
+
 
     const getData = async (body) => {
         try {
@@ -23,6 +25,20 @@ const SearchTag = () => {
         }
     }
 
+    const getAllTags = async () => {
+        try {
+            const response = await axios.get(`https://projeto-full-stack-backend.herokuapp.com/image/allTags`)
+            setAllTagsBd(response.data)
+
+        } catch (error) {
+            alert(error.response.data.error);
+        }
+    }
+
+    useEffect(()=>{
+        getAllTags();
+    },[])
+    
 
     const onSubmitForm = (event) => {
         event.preventDefault();
@@ -54,9 +70,11 @@ const SearchTag = () => {
 
             </Form>
             <TagAlreadExist>
-                <p>ANIMES</p>
-                <p>ANIMES</p>
-                <p>ANIMES</p>
+               {allTagsBd && allTagsBd.allTags && allTagsBd.allTags.map((tag)=>{
+                   return(
+                       <p key={tag.tag_name}>{tag.tag_name}</p>
+                   )
+               })}
             </TagAlreadExist>
             <h2>All results</h2>
             <SearchtagsDiv>
@@ -68,7 +86,7 @@ const SearchTag = () => {
                     )
                 })}
             </SearchtagsDiv>
-            <FooterComponent/>
+            <FooterComponent />
         </Main>
 
     )
