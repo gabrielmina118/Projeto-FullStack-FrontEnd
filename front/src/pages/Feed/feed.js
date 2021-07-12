@@ -16,10 +16,11 @@ export default function Feed() {
     const [feed, getFeed] = FeedApi([]);
     const [PersonFollowHeade, getPersonFollow] = PersonFollowApi([]);
 
-    const [tela, setTela] = useState("profile")
 
     const history = useHistory();
 
+    
+    
 
     const personScreen = person && person.allPersons && person.allPersons.map((person) => {
         return (
@@ -68,7 +69,7 @@ export default function Feed() {
                 <Person>{personScreen}</Person>
             </PersonSugestion>
             <div>{feedscreen}</div>
-            <FooterComponent/>
+            <FooterComponent tokenId={feed && feed.tokenId}/>
         </>
     )
 }
