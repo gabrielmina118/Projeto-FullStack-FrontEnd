@@ -13,7 +13,7 @@ export const PersonFollowApi = (initialData) => {
             })
             setPersonFollows(response.data)
         } catch (error) {
-            console.log('erro', error.response.data.message);
+            console.log(error.response.data.message);
         }
     }
     

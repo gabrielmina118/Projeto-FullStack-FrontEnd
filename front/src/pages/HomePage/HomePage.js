@@ -4,10 +4,11 @@ import { useHistory } from 'react-router-dom';
 import logo from '../../assets/imagens/frontInstagram.jpg'
 import { ImagemLogo, Buttons, Main } from './Style'
 import { goToLoginPage, goToRegisterPage } from '../../Routes/Coordinator'
+import useUnProtectedPage from "../../Hook/useUnprotectedPage";
 
 
 export default function HomePage() {
-
+    useUnProtectedPage()
     const history = useHistory();
 
 

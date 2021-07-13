@@ -21,6 +21,11 @@ export const Buttons = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    height:40%;
+    height:40%;    
+`
+
+export const Erro = styled.div`
     
+    font-size: 20px;
+    color:red;
 `

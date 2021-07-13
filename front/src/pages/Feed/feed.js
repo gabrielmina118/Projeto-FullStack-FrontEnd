@@ -1,14 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useProtectedPage } from '../../Hook/useProtectedPage';
 import { FeedApi } from './FeedApi';
 import { SugestionsPersonApi } from './SugestionsPersonApi';
 import { SugestionPersonCard } from '../../components/SugestionPerson/SugestionPersonCard';
-import { PersonSugestion, FeedCard, ImagemFeed, PersonFollow, Person, MainFeed, PersonFolled } from './styles'
+import { PersonSugestion, FeedCard, PersonFollow, Person, MainFeed} from './styles'
 import { PersonFollowApi } from './PersonFollow';
-import { useHistory } from 'react-router-dom';
-import { goToProfilePage, goToSearchTagPage } from '../../Routes/Coordinator';
-import { Card } from 'semantic-ui-react'
-import { Footer, FooterComponent } from '../../components/footer/Footer';
+import { FooterComponent } from '../../components/footer/Footer';
 
 export default function Feed() {
     useProtectedPage();
@@ -16,8 +13,16 @@ export default function Feed() {
     const [feed, getFeed] = FeedApi([]);
     const [PersonFollowHeade, getPersonFollow] = PersonFollowApi([]);
 
-
-    const history = useHistory();
+    const PersonFollowScreen = PersonFollowHeade && PersonFollowHeade.personFollows && PersonFollowHeade.personFollows.map((feed) => {
+        return (
+            <SugestionPersonCard
+                key={feed.person_followed_id}
+                id={feed.person_followed_id}
+                photo_profile={feed.photo_profile}
+            >
+            </SugestionPersonCard>
+        )
+    })
 
     const personScreen = person && person.allPersons && person.allPersons.map((person) => {
         return (
@@ -25,6 +30,7 @@ export default function Feed() {
                 key={person.id}
                 id={person.id}
                 nickname={person.nickname}
+                photo_profile={person.photo_profile}
             >
             </SugestionPersonCard>
         )
@@ -41,41 +47,38 @@ export default function Feed() {
                     <div class="image">
                         <img src={feed.file_photo} />
                     </div>
-
                 </div>
-                <br></br>
             </FeedCard>
         )
     })
 
-
-    const PersonFollowScreen = PersonFollowHeade && PersonFollowHeade.personFollows && PersonFollowHeade.personFollows.map((feed) => {
-        return (
-            <PersonFolled key={feed.file_photo}>
-                <h2>@{feed.person_followed_id}</h2>
-                <button onClick={() => goToProfilePage(history, feed.person_followed_id)}>Ver perfil</button>
-            </PersonFolled>
-        )
-    })
-
     useEffect(() => {
-        getFeed()
+        getFeed();
+        getPersonFollow();
+        getperson();
     }, [])
+
+    const tokenId = feed && feed.tokenId;
 
     return (
         <>
-
             <MainFeed>Feeds</MainFeed>
             <PersonFollow>
                 <h2>Pessoas que eu sigo</h2>
-                <Person>{PersonFollowScreen}</Person>
+                <Person>
+                    {PersonFollowScreen}
+                </Person>
             </PersonFollow>
             <PersonSugestion>
                 <h2>Suguestao de pessoas</h2>
-                <Person>{personScreen}</Person>
+                <Person>
+                    {personScreen}
+                </Person>
             </PersonSugestion>
-            <div>{feedscreen}</div>
-            <FooterComponent tokenId={feed && feed.tokenId} />
+            <div>
+                {feedscreen}
+            </div>
+            <FooterComponent tokenId={tokenId} />
         </>
     )
 }

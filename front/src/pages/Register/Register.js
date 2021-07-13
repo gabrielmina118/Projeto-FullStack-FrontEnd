@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import useForm from '../../Hook/useForm';
@@ -9,7 +9,7 @@ import { useHistory } from 'react-router-dom';
 
 export default function Register() {
 
-    const [form, onChange, clear] = useForm({ name: '', nickname: '', email: '', password: '' })
+    const [form, onChange, clear] = useForm({ name: '', nickname: '', email: '', password: '' ,userImage:''})
     const history = useHistory();
 
     const onSubmitForm = (event) => {
@@ -57,6 +57,22 @@ export default function Register() {
                 />
                 <TextField
                     autoFocus
+                    name={'userImage'}
+                    value={form.userImage}
+                    onChange={onChange}
+                    size="normal"
+                    required
+                    fullWidth
+                    label="EndereçoDaFoto.jpg"
+                    style={{ margin: 8 }}
+                    margin="normal"
+                    InputLabelProps={{
+                        shrink: true,
+                    }}
+                    variant="outlined"
+                />
+                <TextField
+                    autoFocus
                     name={'email'}
                     value={form.email}
                     onChange={onChange}
@@ -80,10 +96,10 @@ export default function Register() {
                     onChange={onChange}
                     type='password'
                     size="normal"
-                    inputProps={{ maxLength: 6 }}
+                    inputProps={{ minLength: 6 }}
                     required
                     fullWidth
-                    label="Senha (Máx 6 caracteres)"
+                    label="Senha (Minimo 6 caracteres)"
                     style={{ margin: 8 }}
                     margin="normal"
                     InputLabelProps={{

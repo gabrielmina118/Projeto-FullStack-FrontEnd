@@ -13,7 +13,8 @@ export const Main = styled.div`
 export const ImagemLogo = styled.img`
     display: flex;
     width:100%;
-    height:70%;    
+    height:70%; 
+    text-align: center;
 `
 
 export const Buttons = styled.div`

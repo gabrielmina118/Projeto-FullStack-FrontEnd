@@ -27,3 +27,8 @@ export const goToForgotPassPage = (history) =>{
 export const goToCreatePost = (history) =>{
     history.push("/createPost")
 }
+
+export const logOut = (history) => {
+    window.localStorage.removeItem("token");
+    history.push("/")
+}
