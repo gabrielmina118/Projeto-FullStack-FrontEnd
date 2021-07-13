@@ -2,10 +2,10 @@ import styled from 'styled-components'
 
 export const Footer = styled.div`
     overflow: hidden;
-    background-color: #333;
     position: fixed;
     bottom: 0;
     display:flex;
+    min-height: 2%;
     align-items: center;
     justify-content: center;
 `

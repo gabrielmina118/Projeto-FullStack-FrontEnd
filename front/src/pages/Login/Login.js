@@ -1,21 +1,35 @@
 import { Button } from "@material-ui/core";
 import { TextField } from '@material-ui/core';
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory } from "react-router-dom";
 import useForm from '../../Hook/useForm';
-import { Form, Buttons, Main } from './style';
+import { Form, Buttons, Main ,Erro } from './style';
 import { goToForgotPassPage } from '../../Routes/Coordinator'
-import { LoginApi } from "./LoginApi";
+import axios from "axios";
+
 
 
 const Login = () => {
 
     const [form, onChange, clear] = useForm({ emailOrNick: '', password: '' })
+    const [erro,setErro] = useState()
     const history = useHistory();
+
+    const LoginApi = async(body,history) =>{
+        try {
+            const response = await axios.post("https://projeto-full-stack-backend.herokuapp.com/user/login", body);
+            window.localStorage.setItem("token",response.data.token)
+            alert(`Welcome ${body.emailOrNick} `)
+            history.push("/feed")
+        } catch (error) {
+            setErro(error.response.data.error)
+        }
+    }
 
     const onSubmitForm = (event) => {
         event.preventDefault()
-        LoginApi(form,history)
+        LoginApi(form,history);
+        
     }
 
     return (
@@ -56,6 +70,7 @@ const Login = () => {
                     }}
                     variant="outlined"
                 />
+                <Erro>{erro}</Erro>
                 <Buttons>
                     <Button
                         type='submit'

@@ -5,6 +5,7 @@ export const MainFeed = styled.div`
     justify-content: center;
     font-size:40px;
     font-weight: bolder;
+    margin:20px 0;
 `
 
 export const PersonFollow = styled.div`
@@ -14,13 +15,25 @@ export const PersonFollow = styled.div`
 
 export const Person = styled.div`
     display: flex;
-    flex-direction:row;
-    flex-flow: row wrap;
+    overflow: auto;
+    outline: 1px dashed lightgray;
+    flex: none;
+    width: 100%;
+    height: 128px;
+    flex-flow: row nowrap;
+    scroll-snap-type: x mandatory;
+    justify-content: space-evenly;
+    margin-left: 20px;
 `
 
 export const PersonSugestion = styled.div`
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    flex-flow: column nowrap;
+    font-family: monospace;
+
 `
 export const FeedCard = styled.div`
     display: flex;
@@ -28,6 +41,7 @@ export const FeedCard = styled.div`
     flex-direction: column;
     width: 100%;
     height: 100%;
+    margin-top: 20px;
 
 `
 export const ImagemFeed = styled.img`

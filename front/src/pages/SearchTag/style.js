@@ -5,14 +5,6 @@ export const Main = styled.div`
     flex-direction: column;
     width: 100%;
     height: 90vh;
-    /*
-     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    width: 100%;
-    height: 90vh;
-    */
 `
 export const Form = styled.form`
     display: flex;
@@ -40,5 +32,8 @@ export const FeedCard = styled.div`
 export const ImagemFeed = styled.img`
     width: 100%;
     height: 100%;
-
+`
+export const Erro = styled.div`
+    font-size: 20px;
+    color:red;
 `

@@ -1,18 +1,21 @@
-import Button from '@material-ui/core/Button';
-import { follow} from '../FollowOrUnFollow';
-import { Main } from './styles';
+import { useHistory } from 'react-router-dom';
+import { goToProfilePage } from '../../Routes/Coordinator';
+import { Main, Name } from './styles';
 
 export const SugestionPersonCard = (props) => {
-
+    const history = useHistory();
     return (
-        <Main>
-            <h3>{props.nickname}</h3>
-            <Button
-                variant="contained"
-                color="primary"
-                onClick={()=>follow(props.id)}
-                bg='brand.100'
-            >Follow</Button>
+        <Main onClick={()=>goToProfilePage(history,props.id)}>
+            <div class="ui massive horizontal divided list">
+                <div class="item">
+                    <Name>
+                        <img class="ui avatar image" src={props.photo_profile} />
+                        <div class="content">
+                            <a class="header"><h4>{props.nickname}</h4></a>
+                        </div>
+                    </Name>
+                </div>
+            </div>
         </Main>
     )
 }

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import useForm from '../../Hook/useForm';
 import TextField from '@material-ui/core/TextField';
-import { Main, Form, SearchtagsDiv, FeedCard, ImagemFeed, TagAlreadExist } from './style'
+import { Main, Form, SearchtagsDiv, FeedCard, ImagemFeed, TagAlreadExist , Erro } from './style'
 import axios from 'axios';
 import { FooterComponent } from '../../components/footer/Footer';
 
@@ -10,7 +10,7 @@ const SearchTag = () => {
     const [form, onChange, clear] = useForm({ search: '' })
     const [tagsPhotos, setTagsPhotos] = useState([]);
     const [allTagsBd, setAllTagsBd] = useState([])
-
+    const [erro,setErro] = useState("");
 
     const getData = async (body) => {
         try {
@@ -20,8 +20,9 @@ const SearchTag = () => {
                 }
             })
             setTagsPhotos(response.data)
+            setErro("")
         } catch (error) {
-            alert(error.response.data.error);
+            setErro(error.response.data.error)
         }
     }
 
@@ -76,6 +77,7 @@ const SearchTag = () => {
                    )
                })}
             </TagAlreadExist>
+            <Erro>{erro}</Erro>
             <h2>All results</h2>
             <SearchtagsDiv>
                 {tagsPhotos && tagsPhotos.tagsWihtPhoto && tagsPhotos.tagsWihtPhoto.map((tag) => {
