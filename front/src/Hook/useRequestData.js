@@ -19,7 +19,7 @@ const useRequestData = (initialData, url) => {
   useEffect(() => {
     
     getData();
-  }, [data]);
+  }, []);
 
   return [data, getData];
 };
