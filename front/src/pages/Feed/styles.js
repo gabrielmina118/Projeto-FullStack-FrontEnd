@@ -22,17 +22,14 @@ export const Person = styled.div`
     height: 128px;
     flex-flow: row nowrap;
     scroll-snap-type: x mandatory;
-    justify-content: space-evenly;
     margin-left: 20px;
 `
 
 export const PersonSugestion = styled.div`
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    flex-flow: column nowrap;
-    font-family: monospace;
+    flex-flow: column;
+    width: 100%;
 
 `
 export const FeedCard = styled.div`

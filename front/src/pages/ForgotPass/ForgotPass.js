@@ -1,20 +1,21 @@
 import { Button } from '@material-ui/core';
 import { TextField } from '@material-ui/core';
-import React from 'react'
+import React, { useState } from 'react'
 import { useHistory } from 'react-router';
 import useForm from '../../Hook/useForm';
 import { goToLoginPage } from '../../Routes/Coordinator';
 import { ForgotPassAPi } from './ForgotPassApi';
-import { Main,Form,Buttons } from './style';
+import { Main,Form,Buttons ,ReturnEmail } from './style';
 
 const ForgotPass = () => {
     const [form, onChange, clear] = useForm({ email: ''})
-
+    const [email,setEmail] = useState();
     const history = useHistory();
 
     const onSubmitForm = (event) => {
         event.preventDefault()
-        ForgotPassAPi(form,history)
+        setEmail(`Estamos enviando uma nova senha para ${form.email}`)
+        // ForgotPassAPi(form,history)
     }
     
     return (
@@ -38,6 +39,7 @@ const ForgotPass = () => {
                     }}
                     variant="outlined"
                 />
+                <ReturnEmail>{email}</ReturnEmail>
                 <Buttons>
                     <Button
                         type='submit'

@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import { FooterComponent } from "../../components/footer/Footer"
 import useForm from "../../Hook/useForm";
 import { PostApi } from "./PostApi";
-import { Form, Buttons, Main, DropDownLabelSelect } from './style';
+import { Form, Buttons, Main, DropDownLabelSelect , Answer } from './style';
 import {useProtectedPage} from '../../Hook/useProtectedPage';
 
 
@@ -14,7 +14,7 @@ export default function Post() {
 
     const [form, onChange, clear] = useForm({ subtitle: '', file_photo: '', data_criacao: '', tags_name: '' })
     const [allTagsBd, setAllTagsBd] = useState([])
-
+    const [answer, setAnswer] = useState("")
     const history = useHistory();
 
     const getAllTags = async () => {
@@ -47,6 +47,8 @@ export default function Post() {
         event.preventDefault()
         getCurrentData();
         PostApi(form)
+        setAnswer("Postagem criada com sucesso")
+        clear()
     }
 
     useEffect(() => {
@@ -98,6 +100,7 @@ export default function Post() {
                         </select>
                     </DropDownLabelSelect>
                 </div>
+                <Answer>{answer}</Answer>
                 <Buttons>
                     <Button
                         type='submit'

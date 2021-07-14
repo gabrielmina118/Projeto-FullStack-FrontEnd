@@ -24,3 +24,8 @@ export const Buttons = styled.div`
     height:20%;
     
 `
+export const ReturnEmail = styled.div`
+    width: 100%;
+    font-size: 20px;
+    color:green;
+`
