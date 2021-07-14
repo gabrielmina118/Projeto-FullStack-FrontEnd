@@ -21,3 +21,13 @@ Figma Projeto
 https://www.figma.com/file/jvksGTjMdtiAl413yEUD8J/Prototyping-in-Figma?node-id=0%3A1
 
 link do projeto - instagram-labenu.surge.sh
+
+## Instalação
+
+
+```sh
+npm install 
+```
+```sh
+npm run start
+```
