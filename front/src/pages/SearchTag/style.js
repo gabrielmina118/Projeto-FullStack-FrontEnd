@@ -27,11 +27,13 @@ export const FeedCard = styled.div`
     flex-direction: column;
     width: 100%;
     height: 100%;
+    
 
 `
 export const ImagemFeed = styled.img`
     width: 100%;
     height: 100%;
+    
 `
 export const Erro = styled.div`
     font-size: 20px;

@@ -1,16 +1,15 @@
 import React, { useEffect } from 'react'
 import { useProtectedPage } from '../../Hook/useProtectedPage';
-import { FeedApi } from './FeedApi';
-import { SugestionsPersonApi } from './SugestionsPersonApi';
 import { SugestionPersonCard } from '../../components/SugestionPerson/SugestionPersonCard';
-import { PersonSugestion, FeedCard, PersonFollow, Person, MainFeed} from './styles'
+import { PersonSugestion, FeedCard, PersonFollow, Person, MainFeed } from './styles'
 import { PersonFollowApi } from './PersonFollow';
 import { FooterComponent } from '../../components/footer/Footer';
+import useRequestData from '../../Hook/useRequestData';
 
 export default function Feed() {
     useProtectedPage();
-    const [person, getperson] = SugestionsPersonApi();
-    const [feed, getFeed] = FeedApi([]);
+    const [personSugestion, getperson] = useRequestData([], "https://projeto-full-stack-backend.herokuapp.com/user/all");
+    const [feed, getFeed] = useRequestData([],"https://projeto-full-stack-backend.herokuapp.com/user/feed");
     const [PersonFollowHeade, getPersonFollow] = PersonFollowApi([]);
 
     const PersonFollowScreen = PersonFollowHeade && PersonFollowHeade.personFollows && PersonFollowHeade.personFollows.map((feed) => {
@@ -24,7 +23,7 @@ export default function Feed() {
         )
     })
 
-    const personScreen = person && person.allPersons && person.allPersons.map((person) => {
+    const personScreen = personSugestion && personSugestion.allPersons && personSugestion.allPersons.map((person) => {
         return (
             <SugestionPersonCard
                 key={person.id}
@@ -58,8 +57,9 @@ export default function Feed() {
         getperson();
     }, [])
 
+    
     const tokenId = feed && feed.tokenId;
-
+console.log(tokenId);
     return (
         <>
             <MainFeed>Feeds</MainFeed>

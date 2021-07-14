@@ -30,3 +30,7 @@ export const DropDownLabelSelect = styled.div`
     flex-direction: column;
     justify-content: space-between;
 `
+export const Answer = styled.div`
+    color:green;
+    font-size: 20px;
+`

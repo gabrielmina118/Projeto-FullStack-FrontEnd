@@ -49,7 +49,7 @@ export default function Profile() {
 
     useEffect(() => {
         getProfile()
-    }, [])
+    }, [followPerson])
 
     const photosScreen = personProfile && personProfile.personPhotosFile && personProfile.personPhotosFile.map((photo) => {
         return (

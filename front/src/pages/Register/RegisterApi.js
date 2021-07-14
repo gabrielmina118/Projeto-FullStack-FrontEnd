@@ -7,6 +7,8 @@ export const RegisterApi = async(body, history) => {
         alert(`${body.nickname} Registrado com sucesso `)
         history.push("/feed")
     }catch(erro){
-        alert(erro.response.data.message);
+        if(erro.response.data.error.includes("Duplicate entry")){
+            alert("Nome ou Nicknome ja existentes");
+        }
     }
 }
