@@ -2,15 +2,14 @@ import React, { useEffect } from 'react'
 import { useProtectedPage } from '../../Hook/useProtectedPage';
 import { SugestionPersonCard } from '../../components/SugestionPerson/SugestionPersonCard';
 import { PersonSugestion, FeedCard, PersonFollow, Person, MainFeed } from './styles'
-import { PersonFollowApi } from './PersonFollow';
 import { FooterComponent } from '../../components/footer/Footer';
 import useRequestData from '../../Hook/useRequestData';
 
 export default function Feed() {
     useProtectedPage();
     const [personSugestion, getperson] = useRequestData([], "https://projeto-full-stack-backend.herokuapp.com/user/all");
-    const [feed, getFeed] = useRequestData([],"https://projeto-full-stack-backend.herokuapp.com/user/feed");
-    const [PersonFollowHeade, getPersonFollow] = PersonFollowApi([]);
+    const [feed, getFeed] = useRequestData([], "https://projeto-full-stack-backend.herokuapp.com/user/feed");
+    const [PersonFollowHeade, getPersonFollow] = useRequestData([], "https://projeto-full-stack-backend.herokuapp.com/user/personFollow");
 
     const PersonFollowScreen = PersonFollowHeade && PersonFollowHeade.personFollows && PersonFollowHeade.personFollows.map((feed) => {
         return (
@@ -40,7 +39,7 @@ export default function Feed() {
             <FeedCard key={feed.file_photo}>
                 <div class="ui card">
                     <div class="content">
-                        <div class="right floated meta">14h</div>
+                        <div class="right floated meta">3h</div>
                         <img class="ui avatar image" src={feed.photo_profile} /> {"@" + feed.nickname}
                     </div>
                     <div class="image">
@@ -51,15 +50,16 @@ export default function Feed() {
         )
     })
 
+
     useEffect(() => {
         getFeed();
         getPersonFollow();
         getperson();
     }, [])
 
-    
+
     const tokenId = feed && feed.tokenId;
-console.log(tokenId);
+
     return (
         <>
             <MainFeed>Feeds</MainFeed>
